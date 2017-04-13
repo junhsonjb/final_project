@@ -26,20 +26,24 @@ class Snake:
 
 	#MOVEMENT FUNCTIONS
 	def moveRight(self):
-		while ( (self.xCor > 0 and self.xCor < self.boardSize[0]) and (self.yCor > 0 and self.yCor < self.boardSize[1]) ):
-			self.xCor += 1
+		while ( """in board bounds""" ):
+			for i in range(len(self.bodycoords)):
+				self.bodycoords[i][0] += 1
 
 	def moveLeft(self):
-		while ( (self.xCor > 0 and self.xCor < self.boardSize[0]) and (self.yCor > 0 and self.yCor < self.boardSize[1]) ):
-			self.xCor -= 1
+		while ( """in board bounds""" ):
+			for i in range(len(self.bodycoords)):
+				self.bodycoords[i][0] -= 1
 
 	def moveUp(self):
-		while ( (self.xCor > 0 and self.xCor < self.boardSize[0]) and (self.yCor > 0 and self.yCor < self.boardSize[1]) ):
-			self.yCor -= 1
+		while ( """in board bounds""" ):
+			for i in range(len(self.bodycoords)):
+				self.bodycoords[i][1] -= 1
 
 	def moveDown(self):
-		while ( (self.xCor > 0 and self.xCor < self.boardSize[0]) and (self.yCor > 0 and self.yCor < self.boardSize[1]) ):
-			self.yCor += 1
+		while ( """in board bounds""" ):
+			for i in range(len(self.bodycoords)):
+				self.bodycoords[i][1] += 1
 
 	#GROWTH FUNCTION
 	def grow(self):

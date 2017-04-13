@@ -3,10 +3,10 @@ import square
 
 class Board:
 
-    def __init__(self, snake, sqr, bounds, bkgrd):
+    def __init__(self, snake, sqr, boardSize, bkgrd):
         self.snake = snake
         self.square = sqr
-        self.bounds = bounds
+        self.boardSize = boardSize
         self.background = bkgrd
 
 
