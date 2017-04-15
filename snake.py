@@ -6,7 +6,7 @@ class Snake:
 		self.length = length
 		self.color = color
 
-		self.boardSize = boardSize
+		self.boardSize = boardSize#should be a tuple with board's x and y coords
 		#self.xCor = ( boardSize[0] ) / 2
 		#self.yCor = ( boardSize[1] ) / 2
 		#Initialize the first body part coordinate in the center of screen
@@ -24,24 +24,32 @@ class Snake:
 	def getLength(self):
 		return self.length
 
+	def inBounds(self):
+		for i in range(len(self.bodycoords)):
+			#IF: the x and y coords of each body part is within the x and y coords of the board:
+			if (self.bodycoords[i][0] < self.boardSize[0] and self.bodycoords[i][1] < self.boardSize[1]):
+				return True
+			else:
+				return False
+
 	#MOVEMENT FUNCTIONS
 	def moveRight(self):
-		while ( """in board bounds""" ):
+		while ( inBounds() ):
 			for i in range(len(self.bodycoords)):
 				self.bodycoords[i][0] += 1
 
 	def moveLeft(self):
-		while ( """in board bounds""" ):
+		while ( inBounds() ):
 			for i in range(len(self.bodycoords)):
 				self.bodycoords[i][0] -= 1
 
 	def moveUp(self):
-		while ( """in board bounds""" ):
+		while ( inBounds() ):
 			for i in range(len(self.bodycoords)):
 				self.bodycoords[i][1] -= 1
 
 	def moveDown(self):
-		while ( """in board bounds""" ):
+		while ( inBounds() ):
 			for i in range(len(self.bodycoords)):
 				self.bodycoords[i][1] += 1
 
