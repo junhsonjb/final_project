@@ -3,6 +3,8 @@ import square
 
 class Snake:
 	def __init__(self, boardSize, length=1, color=1):
+		#CONSIDER REMOVING THE length VARIABLE
+		#IF YOU DO, YOU COULD SEE LENGTH BY CHECKING len(self.bodycoords)
 		self.length = length
 		self.color = color
 
@@ -24,6 +26,7 @@ class Snake:
 	def getLength(self):
 		return self.length
 
+	#RETURN BOOLEAN VALUE BASED ON IF SNAKE PARTS ARE IN BOUNDS OF BOARD
 	def inBounds(self):
 		for i in range(len(self.bodycoords)):
 			#IF: the x and y coords of each body part is within the x and y coords of the board:
@@ -55,12 +58,8 @@ class Snake:
 
 	#GROWTH FUNCTION
 	def grow(self):
-
-		#FUNCTION TO BE COMPLETED AND PLACED IN BOARD CLASS
-		# if (bodycoords[0] == square.coords)
-		# 	self.length += 1
-		# 	self.bodycoords += [] #add a new list element ([x, y] -- but its empty right now) to bodycoords
-		# 	#CREATE NEW SQUARE
+		#add another list to bodycoords, where x and y are += 1 of its previos list element
+		self.bodycoords += [(self.bodycoords[-1][0] + 1), (self.bodycoords[-1][1] + 1)]
 
 	def __str__(self):
-		return "x coorindate: " + str(self.getXCor()) + "\ny coordinate: " + str(self.getYCor())
+		return "head x coorindate: " + str(self.bodycoords[0][0]) + "\nbody y coordinate: " + str(self.bodycoords[0][1])

@@ -36,10 +36,12 @@ class Board:
         #I'm not sure what type this will be yet. First guess - object
     #END ACCESSOR MEHTODS
 
-    def grow(self):
+    def ateSquare(self):
+        #if the snake head and square are in same position
         if (self.snakey.bodycoords[0] == self.apple.coords):
-            self.snakey.length += 1#consider making the snake grow by more upon eating
-            self.snakey.bodycoords += []
+
+            self.snakey.grow() #grow function
+
             #SET SAID APPLE TO DISAPPEAR AND MAKE NEW ONE
             self.apple = square.Square()#save new apple in same name deletes the old one!
 
