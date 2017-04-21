@@ -38,15 +38,15 @@ class Board:
 
     def ateSquare(self):
         #if the snake head and square are in same position
-        if (self.snakey.bodycoords[0] == self.apple.coords):
+        if (self.snake.bodycoords[0] == self.apple.coords):
 
-            self.snakey.grow() #grow function
+            self.snake.grow() #grow function
 
             #SET SAID APPLE TO DISAPPEAR AND MAKE NEW ONE
             self.apple = square.Square()#save new apple in same name deletes the old one!
 
     def dead(self):
-        all_but_head = self.snakey.bodycoords[1:]
-        if (self.snakey.bodycoords[0] in all_but_head):
+        all_but_head = self.snake.bodycoords[1:]
+        if (self.snake.bodycoords[0] in all_but_head):
             #How to set the game to be over?
             pass #this will be the code that sets the game to be over
