@@ -48,5 +48,8 @@ class Board:
     def dead(self):
         all_but_head = self.snake.bodycoords[1:]
         if (self.snake.bodycoords[0] in all_but_head):
-            #How to set the game to be over?
-            pass #this will be the code that sets the game to be over
+          return True
+        elif (inBounds == False):
+            return True
+            
+           
