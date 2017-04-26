@@ -41,7 +41,7 @@ def main():
             if (event.type == pygame.QUIT):
                 menu = True
             elif(event.type == pygame.KEYDOWN):
-                if(event.key = pygame.K_UP):
+                if(event.key == pygame.K_UP):
                     mamba.up()
                 elif(event.key == pygame.K.DOWN):
                     mamba.down()
