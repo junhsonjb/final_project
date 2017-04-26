@@ -1,20 +1,12 @@
 import random
 
 class Square:
-	def __init__(self, boardSize):
-		self.boardSize = boardSize
-		# self.xCor = random.randint(0, boardSize[0])
-		# self.yCor = random.randint(0, boardSize[1])
-		self.coords = [(random.randint(0, boardSize[0])), (random.randint(0, boardSize[1]))]
+	def __init__(self, boardSize, blockSize):
+        self.blockSize = blockSize
+        self.boardSize = boardSize
+        self.xcord = round(random.randint(0, self.boardSize[0] - blockSize) / 10.0) * 10.0
+        self.ycord = round(random.randint(0, self.boardSize[1] - blockSize) / 10.0) * 10.0
 
-	# def getXCor(self):
-	# 	return self.xCor
-	#
-	# def getYCor(self):
-	# 	return self.yCor
-
-	def getCoords(self):
-		return self.coords
-
-	def __str__(self):
-		return "x coorindate: " + str(self.getXCor()) + "\ny coordinate: " + str(self.getYCor())
+	def resetAppleCoords(self, blockSize):
+		self.xcord = round(random.randint(0, self.boardSize[0] - blockSize) / 10.0) * 10.0
+        self.ycord = round(random.randint(0, self.boardSize[1] - blockSize) / 10.0) * 10.0
