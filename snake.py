@@ -22,6 +22,7 @@ class Snake:
 		self.xchange = 0
 
 	#the function to move down on the board
+	#trying to fix tab issue on github
 	def down(self):
 		self.ychange = self.blockSize
 		self.xchange = 0
