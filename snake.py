@@ -22,7 +22,6 @@ class Snake:
 		self.xchange = 0
 
 	#the function to move down on the board
-	#trying to fix tab issue on github
 	def down(self):
 		self.ychange = self.blockSize
 		self.xchange = 0
@@ -36,6 +35,24 @@ class Snake:
 	def right(self):
 		self.xchange = self.blockSize
 		self.ychange = 0
+
+	#THE FOLLOWING CODE HAS MOVEMENT FUNCTIONS FOR HARD MODE
+
+	#the function to move up on the board IN HARD MODE
+	def d_up(self):
+		self.ychange = -self.blockSize
+
+	#the function to move down on the board IN HARD MODE
+	def d_down(self):
+		self.ychange = self.blockSize
+
+	#the function to move left on the board IN HARD MODE
+	def d_left(self):
+		self.xchange = -self.blockSize
+
+	#the function to move right on the board IN HARD MODE
+	def d_right(self):
+		self.xchange = self.blockSize
 
 	#magic string function
 	def __str__(self):
