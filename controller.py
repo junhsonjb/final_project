@@ -67,7 +67,7 @@ def main():
         while(menu):
 
             menuText = "Game Over. Score: " + str(score) + " "
-            menuText += "Press C to play again and Q to quit and H for hard mode"
+            menuText += "Press C to play again and Q to quit"# and H for hard mode
             message(vis.font, vis.display, RED, menuText)
             vis.flip()
 
@@ -139,13 +139,13 @@ def main():
             if (event.type == pygame.QUIT):
                 destroy()
             elif(event.type == pygame.KEYDOWN):
-                if(event.key == pygame.K_UP):
+                if(event.key == pygame.K_UP or event.key == pygame.K_w):
                     mamba.up()
-                elif(event.key == pygame.K_DOWN):
+                elif(event.key == pygame.K_DOWN or event.key == pygame.K_s):
                     mamba.down()
-                elif(event.key == pygame.K_LEFT):
+                elif(event.key == pygame.K_LEFT or event.key == pygame.K_a):
                     mamba.left()
-                elif(event.key == pygame.K_RIGHT):
+                elif(event.key == pygame.K_RIGHT or event.key == pygame.K_d):
                     mamba.right()
 
         #Logic Loop:
