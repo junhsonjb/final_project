@@ -7,12 +7,9 @@ red = (255,0,0)
 green = (0,120,0)
 
 class View:
-    def __init__(self,boardSize=(900,500)):
-        self.boardsize = boardSize
+    def __init__(self, boardSize=(900,500)):
+        self.boardSize = boardSize
         self.fontSize = 25
-
-
-
 
         pygame.init()
         self.display = pygame.display.set_mode(self.boardSize)
@@ -20,9 +17,12 @@ class View:
         self.font = pygame.font.SysFont("comicsansms",self.fontSize)
     def fillWhite(self):
         self.display.fill(white)
+
     def flip(self):
         pygame.display.flip()
-    def drawSnake(self,blocksize,color,dims):
+
+    def drawSnake(self, blocksize, color, dims):
         pygame.draw.rect(self.display,color,[dims[0],dims[1],blocksize,blocksize])
-    def drawSquare(self,blocksize,color,dims):
+
+    def drawSquare(self, blocksize, color, dims):
         pygame.draw.rect(self.display,color,[dims[0],dims[1],blocksize,blocksize])
