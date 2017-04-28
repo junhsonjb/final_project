@@ -14,7 +14,7 @@ SCREENHEIGHT = 500
 SQUARESIZE = 10
 SNAKESIZE = 10
 FPS = 30
-INCREASE_BY = 1
+INCREASE_BY = 5
 CLOCK = pygame.time.Clock()
 
 def destroy():
@@ -25,9 +25,16 @@ def make_snake(view, mod):
     for cords in mod.snakelist:
         view.drawSnake(mod.blockSize, GREEN, (cords[0], cords[1]))
 
+# def text_objects(viewObject, text, color):
+#     textSurface = viewObject.font.render(text, True, color)
+#     return textSurface, textSurface.get_rect()
+
 def message(font_obj, disp, color, msg):
     text = font_obj.render(msg, True, color)
-    disp.blit(text, [SCREENWIDTH / 2, SCREENHEIGHT / 2])
+    disp.blit(text, [0, 0])
+    # textSurf, textRect = text_objects(disp, msg, color)
+    # textRect.center = (SCREENWIDTH / 2), (SCREENHEIGHT / 2)
+    # disp.blit(textSurf, textRect)
 
 def main():
     mamba = snake.Snake((SCREENWIDTH, SCREENHEIGHT), SNAKESIZE)
