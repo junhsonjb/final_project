@@ -24,5 +24,9 @@ class View:
     def drawSnake(self, blocksize, color, dims):
         pygame.draw.rect(self.display,color,[dims[0],dims[1],blocksize,blocksize])
 
+    def message(self, color, message):
+        text = self.font.render(message, True, color)
+        self.display.blit(text, [0, 0])
+
     def drawSquare(self, blocksize, color, dims):
         pygame.draw.rect(self.display,color,[dims[0],dims[1],blocksize,blocksize])

@@ -29,12 +29,13 @@ def make_snake(view, mod):
 #     textSurface = viewObject.font.render(text, True, color)
 #     return textSurface, textSurface.get_rect()
 
-def message(font_obj, disp, color, msg):
-    text = font_obj.render(msg, True, color)
-    disp.blit(text, [0, 0])
-    # textSurf, textRect = text_objects(disp, msg, color)
-    # textRect.center = (SCREENWIDTH / 2), (SCREENHEIGHT / 2)
-    # disp.blit(textSurf, textRect)
+#THIS FUNCTION WAS MOVED TO THE VIEW CLASS
+# def message(font_obj, disp, color, msg):
+#     text = font_obj.render(msg, True, color)
+#     disp.blit(text, [0, 0])
+#     # textSurf, textRect = text_objects(disp, msg, color)
+#     # textRect.center = (SCREENWIDTH / 2), (SCREENHEIGHT / 2)
+#     # disp.blit(textSurf, textRect)
 
 def main():
     mamba = snake.Snake((SCREENWIDTH, SCREENHEIGHT), SNAKESIZE)
@@ -58,7 +59,7 @@ def main():
         while (start):
             hardmode = False
             startText = "Welcome to Snake! Press Space to begin. Q to quit"
-            message(vis.font, vis.display, RED, startText)
+            vis.message(RED, startText)
             vis.flip()
 
             for event in pygame.event.get():
@@ -75,7 +76,7 @@ def main():
 
             menuText = "Game Over. Score: " + str(score) + " "
             menuText += "Press C to play again and Q to quit"# and H for hard mode
-            message(vis.font, vis.display, RED, menuText)
+            vis.message(RED, menuText)
             vis.flip()
 
             #menu event loop
