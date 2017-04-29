@@ -48,6 +48,7 @@ class View:
     def message4(self, color, message):
         text = self.font.render(message, True, color)
         self.display.blit(text, [0, 45])
+        
 
 
 

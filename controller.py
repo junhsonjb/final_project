@@ -4,6 +4,7 @@ import view
 import snake
 import square
 import json
+import random
 
 #Global Variables
 WHITE = (255, 255, 255)
@@ -42,6 +43,7 @@ def main():
     mamba = snake.Snake((SCREENWIDTH, SCREENHEIGHT), SNAKESIZE)
     vis = view.View(mamba.boardSize)
     food = square.Square((SCREENWIDTH, SCREENHEIGHT), SQUARESIZE)
+    joke = random.choice(vis.jokes)
 
 
     start = True
@@ -86,10 +88,12 @@ def main():
             vis.message(RED, menuText)
 
             msg = "High Score - " + str(high) + "!"
-            vis.message3(RED, msg)
+            vis.message2(RED, msg)
 
             if (score == high):
-                vis.message4(BLUE, "You reached the high score! Kobe Would be so proud")
+                vis.message3(BLUE, "You reached the high score! Kobe Would be so proud")
+
+            vis.message4(GREEN, joke)
 
 
 
