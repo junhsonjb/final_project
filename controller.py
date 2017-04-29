@@ -3,12 +3,14 @@ import pygame
 import view
 import snake
 import square
+import json
 
 #Global Variables
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 120, 0)
+BLUE = (0, 0, 155)
 SCREENWIDTH = 900
 SCREENHEIGHT = 500
 SQUARESIZE = 10
@@ -25,17 +27,16 @@ def make_snake(view, mod):
     for cords in mod.snakelist:
         view.drawSnake(mod.blockSize, GREEN, (cords[0], cords[1]))
 
-# def text_objects(viewObject, text, color):
-#     textSurface = viewObject.font.render(text, True, color)
-#     return textSurface, textSurface.get_rect()
+def highscore():
+    fptr = open("scores.txt", "r")
+    data = int( fptr.read() )
+    fptr.close()
+    return data
 
-#THIS FUNCTION WAS MOVED TO THE VIEW CLASS
-# def message(font_obj, disp, color, msg):
-#     text = font_obj.render(msg, True, color)
-#     disp.blit(text, [0, 0])
-#     # textSurf, textRect = text_objects(disp, msg, color)
-#     # textRect.center = (SCREENWIDTH / 2), (SCREENHEIGHT / 2)
-#     # disp.blit(textSurf, textRect)
+def newhighscore(new):
+    fptr = open("scores.txt", "w")
+    fptr.write( str(new) )
+    fptr.close()
 
 def main():
     mamba = snake.Snake((SCREENWIDTH, SCREENHEIGHT), SNAKESIZE)
@@ -73,10 +74,26 @@ def main():
                         leaveGame = True
 
         while(menu):
+            high = highscore()
+
+            if (score > high):
+                newhighscore(score)
+
+            high = highscore()
 
             menuText = "Game Over. Score: " + str(score) + " "
             menuText += "Press C to play again and Q to quit"# and H for hard mode
             vis.message(RED, menuText)
+
+            msg = "High Score - " + str(high) + "!"
+            vis.message3(RED, msg)
+
+            if (score == high):
+                vis.message4(BLUE, "You reached the high score! Kobe Would be so proud")
+
+
+
+            #vis.joke_message(GREEN)
             vis.flip()
 
             #menu event loop
