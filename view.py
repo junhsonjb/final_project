@@ -26,7 +26,7 @@ class View:
         #set a pygame font. This had to be done after pygame.init()
         self.font = pygame.font.SysFont("comicsansms", self.fontSize)
         #set the window's caption
-        pygame.display.set_caption("Snake: The Black Mamba")
+        pygame.display.set_caption("Snake: The Black Mamba Strikes Again")
 
 
     #function that fills the entire screen with white

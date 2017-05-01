@@ -37,6 +37,7 @@ def pause(view):
                 elif (event.key == pygame.K_c):
                     paused = False
 
+#function that handles the start screen and pre-game screen
 def intro(view):
 
     start = True
@@ -56,7 +57,6 @@ def intro(view):
                     start = False
                 elif (event.key == pygame.K_q):
                     destroy()
-
 
 #function that accesses view and model to draw the snake to the screen
 def make_snake(view, mod):
@@ -118,8 +118,6 @@ def main():
     #Main Game Loop (when this stops the whole game is over -- the program stops running)
     while (not leaveGame):
         vis.fillWhite()
-
-
 
         #Loop for the Menu State, which is accessed when a player loses a round
         while(menu):
