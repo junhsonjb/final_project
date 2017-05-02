@@ -12,6 +12,7 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 120, 0)
 BLUE = (0, 0, 155)
+GRAY = (211, 211, 211)
 SCREENWIDTH = 900
 SCREENHEIGHT = 500
 SQUARESIZE = 10
@@ -43,7 +44,8 @@ def intro(view):
 
     start = True
     while (start):
-        view.fillWhite()
+        #view.fillWhite()
+        view.fillGray()
 
         hardmode = False #to begin with, hardmode is disabled
         startText = "Welcome to Snake! Press Space to begin. P to pause. Q to quit"
@@ -119,7 +121,8 @@ def main():
 
     #Main Game Loop (when this stops the whole game is over -- the program stops running)
     while (not leaveGame):
-        vis.fillWhite() #fill the screen with white for aesthetics
+        #vis.fillWhite() #fill the screen with white for aesthetics
+        vis.fillGray() #fill the whole screen with gray for aesthetics
 
         #Loop for the Menu State, which is accessed when a player loses a round
         while(menu):

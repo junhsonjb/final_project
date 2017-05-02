@@ -1,6 +1,8 @@
 #THe view class code
 import pygame
+#Set Global Color Constants
 WHITE = (255, 255, 255)
+GRAY = (211, 211, 211)
 
 class View:
     #initialize the class
@@ -32,6 +34,10 @@ class View:
     #function that fills the entire screen with white
     def fillWhite(self):
         self.display.fill(WHITE)
+
+    #function that fills the entire screen with GRAY
+    def fillGray(self):
+        self.display.fill(GRAY)
 
     #fuction that flips the display (updating all the changes)
     def flip(self):
