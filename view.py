@@ -50,18 +50,18 @@ class View:
     def message2(self, color, message):
         #kobeText = "Kobe Would be so proud"
         text = self.font.render(message, True, color)
-        self.display.blit(text, [0, 15])
+        self.display.blit(text, [0, 25])
 
     #function that displays text to the third designated message area
     def message3(self, color, message):
         #jokeText = random.choice(self.jokes)
         text = self.font.render(message, True, color)
-        self.display.blit(text, [0, 30])
+        self.display.blit(text, [0, 50])
 
     #function that displays text to the fourth designated message area
     def message4(self, color, message):
         text = self.font.render(message, True, color)
-        self.display.blit(text, [0, 45])
+        self.display.blit(text, [0, 75])
 
     #function that draws the square (snake food) blocks
     def drawSquare(self, blocksize, color, dims):

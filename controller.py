@@ -17,6 +17,7 @@ SCREENHEIGHT = 500
 SQUARESIZE = 10
 SNAKESIZE = 10
 INCREASE_BY = 5
+FPS = 20 #Frames per second
 CLOCK = pygame.time.Clock()
 
 #function to end the entire program
@@ -98,14 +99,15 @@ def gametext(view, mod):
 
 #main game function
 def main():
+    #Initializing Objects
     mamba = snake.Snake((SCREENWIDTH, SCREENHEIGHT), SNAKESIZE) #the snake object
     vis = view.View(mamba.boardSize) #the veiw object
     food = square.Square((SCREENWIDTH, SCREENHEIGHT), SQUARESIZE)#the object of the square that the snake eats/collides with
-    joke = random.choice(vis.jokes) #a random joke from the view class to display on Game Over Screen
 
-    fps = 30 #Frames per second
+    #Setting (Main) Functon Variables
+    joke = random.choice(vis.jokes) #a random joke from the view class to display on Game Over Screen
     start = True #boolean for start state
-    hardmode = False #boolean for hard mode
+    #hardmode = False #boolean for hard mode
     leaveGame = False #primary boolean to keep game running (stops when True)
     menu = False #boolean to keep menu state running
     score = 1 #Every player's starting score (since you have to start at one block)
@@ -117,7 +119,7 @@ def main():
 
     #Main Game Loop (when this stops the whole game is over -- the program stops running)
     while (not leaveGame):
-        vis.fillWhite()
+        vis.fillWhite() #fill the screen with white for aesthetics
 
         #Loop for the Menu State, which is accessed when a player loses a round
         while(menu):
@@ -133,10 +135,10 @@ def main():
             msg = "High Score - " + str(high) + "!"
             vis.message2(RED, msg)
 
-            #notify the user of reaching high score
+            #notify the user of reaching high score if they reached it
             if (score == high):
                 vis.message3(BLUE, "You reached the high score! Kobe Would be so proud")
-            #or encouraging them to keep on playing
+            #or encouraging them to keep on playing if not
             else:
                 vis.message3(BLUE, "You didn't reach the high score, but keep trying")
 
@@ -145,7 +147,6 @@ def main():
 
             #flip the screen using a flip function made in the view code
             vis.flip()
-
 
             #menu event loop
             for event in pygame.event.get():
@@ -159,21 +160,25 @@ def main():
                         menu = False
                     elif (event.key == pygame.K_h):
                         hardmode = True
-                        print("hmode is true")
+                        #print("hmode is true")
 
         #Game State event loop
         for event in pygame.event.get():
             if (event.type == pygame.QUIT):
-                destroy()
+                destroy() #quit the game and the entire program
             elif(event.type == pygame.KEYDOWN):
                 if(event.key == pygame.K_UP or event.key == pygame.K_w):
-                    mamba.up()
+                    if (mamba.ychange <= 0):
+                        mamba.up()
                 elif(event.key == pygame.K_DOWN or event.key == pygame.K_s):
-                    mamba.down()
+                    if (mamba.ychange >= 0):
+                        mamba.down()
                 elif(event.key == pygame.K_LEFT or event.key == pygame.K_a):
-                    mamba.left()
+                    if (mamba.xchange <= 0):
+                        mamba.left()
                 elif(event.key == pygame.K_RIGHT or event.key == pygame.K_d):
-                    mamba.right()
+                    if (mamba.xchange >= 0):
+                        mamba.right()
                 elif(event.key == pygame.K_p):
                     pause(vis)
 
@@ -183,10 +188,13 @@ def main():
         if (mamba.xcord >= mamba.boardSize[0] or mamba.xcord < 0 or mamba.ycord >= mamba.boardSize[1] or mamba.ycord < 0):
             menu = True
 
+
         #with each iteration of the loop, add the xchange and ychange values
         # to the current x and y coordinates to simulate a moving image
         mamba.xcord += mamba.xchange
         mamba.ycord += mamba.ychange
+
+
 
         #draw the snake's food in random x and y coordinates
         vis.drawSquare(SQUARESIZE, RED, (food.xcord, food.ycord))
@@ -229,12 +237,8 @@ def main():
             mamba.snakelength += INCREASE_BY
             score += INCREASE_BY
 
-        #if hardmode is set to True, make the snake move faster
-        if (hardmode == True):
-            fps = 30
-        CLOCK.tick(fps)
-
-
+        #Setting the Frames Per Second
+        CLOCK.tick(FPS)
 
     destroy() #end the program once the primary game loop ends
 
