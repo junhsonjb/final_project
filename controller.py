@@ -36,7 +36,7 @@ def pause(view):
             elif (event.type == pygame.KEYDOWN):
                 if (event.key == pygame.K_q):
                     destroy()
-                elif (event.key == pygame.K_c):
+                elif (event.key == pygame.K_SPACE):
                     paused = False
 
 #function that handles the start screen and pre-game screen
@@ -96,8 +96,8 @@ def showscore(score, view):
 
 #function that prints some simple text to the screen
 def gametext(view, mod):
-    text = view.font.render("Press C to continue. P to pause. Q to quit", True, BLACK)
-    view.display.blit(text, [0, 15])
+    text = view.font.render("Press the Space Bar to continue. P to pause. Q to quit", True, BLACK)
+    view.display.blit(text, [0, 25])
 
 #main game function
 def main():
@@ -131,7 +131,7 @@ def main():
 
             #display the Game Menu Text notifying player of score and how to restart
             menuText = "Game Over. Score: " + str(score) + " "
-            menuText += "Press C to play again and Q to quit"# and H for hard mode
+            menuText += "Press Space to play again and Q to quit"# and H for hard mode
             vis.message(RED, menuText)
 
             #notify user of the high score
@@ -156,7 +156,7 @@ def main():
                 if (event.type == pygame.QUIT):
                     destroy()
                 elif (event.type == pygame.KEYDOWN):
-                    if (event.key == pygame.K_c):
+                    if (event.key == pygame.K_SPACE):
                         main()
                     elif (event.key == pygame.K_q):
                         leaveGame = True
@@ -170,20 +170,32 @@ def main():
             if (event.type == pygame.QUIT):
                 destroy() #quit the game and the entire program
             elif(event.type == pygame.KEYDOWN):
-                if(event.key == pygame.K_UP or event.key == pygame.K_w):
-                    if (mamba.ychange <= 0):
+                if (mamba.snakelength > 1):
+                    if(event.key == pygame.K_UP or event.key == pygame.K_w):
+                        if (mamba.ychange <= 0):
+                            mamba.up()
+                    elif(event.key == pygame.K_DOWN or event.key == pygame.K_s):
+                        if (mamba.ychange >= 0):
+                            mamba.down()
+                    elif(event.key == pygame.K_LEFT or event.key == pygame.K_a):
+                        if (mamba.xchange <= 0):
+                            mamba.left()
+                    elif(event.key == pygame.K_RIGHT or event.key == pygame.K_d):
+                        if (mamba.xchange >= 0):
+                            mamba.right()
+                    elif(event.key == pygame.K_p):
+                        pause(vis)
+                else:
+                    if(event.key == pygame.K_UP or event.key == pygame.K_w):
                         mamba.up()
-                elif(event.key == pygame.K_DOWN or event.key == pygame.K_s):
-                    if (mamba.ychange >= 0):
+                    elif(event.key == pygame.K_DOWN or event.key == pygame.K_s):
                         mamba.down()
-                elif(event.key == pygame.K_LEFT or event.key == pygame.K_a):
-                    if (mamba.xchange <= 0):
+                    elif(event.key == pygame.K_LEFT or event.key == pygame.K_a):
                         mamba.left()
-                elif(event.key == pygame.K_RIGHT or event.key == pygame.K_d):
-                    if (mamba.xchange >= 0):
+                    elif(event.key == pygame.K_RIGHT or event.key == pygame.K_d):
                         mamba.right()
-                elif(event.key == pygame.K_p):
-                    pause(vis)
+                    elif(event.key == pygame.K_p):
+                        pause(vis)
 
         #Logic Loop:
 
